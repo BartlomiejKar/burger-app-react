@@ -27,6 +27,7 @@ class BurgerElements extends Component {
       case "Cheese":
         elementsOfBurger = <div className={"Cheese"}></div>;
         break;
+      default:
     }
     return elementsOfBurger;
   }
