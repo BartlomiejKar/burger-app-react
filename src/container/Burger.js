@@ -13,8 +13,7 @@ const burger = (props) => {
   return (
     <div className="Burger">
       <BurgerElements type="burger-top" />
-      <BurgerElements type="Cheese" />
-      <BurgerElements type="Bacon" />
+      {transformIngriedents}
       <BurgerElements type="burger-bottom" />
     </div>
   );
