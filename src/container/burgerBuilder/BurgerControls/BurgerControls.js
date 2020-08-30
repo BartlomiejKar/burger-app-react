@@ -18,6 +18,8 @@ const BurgerControls = (props) => {
             added={() => props.addIngriedents(el.type)}
             key={el.label}
             label={el.label}
+            remove={() => props.removeIngriedents(el.type)}
+            disabled={props.disabledButton[el.type]}
           />
         );
       })}
