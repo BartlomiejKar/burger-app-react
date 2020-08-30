@@ -3,10 +3,7 @@ import "./BurgerButtons/BurgerButtons.css";
 import BurgerButtons from "./BurgerButtons/BurgerButtons";
 
 const controls = [
-  {
-    label: "Salad",
-    type: "salad",
-  },
+  { label: "Salad", type: "salad" },
   { label: "Bacon", type: "bacon" },
   { label: "Cheese", type: "cheese" },
   { label: "Meat", type: "meat" },
@@ -16,7 +13,13 @@ const BurgerControls = (props) => {
   return (
     <div className="BuildControl">
       {controls.map((el) => {
-        return <BurgerButtons key={el.label} type={el.type} label={el.label} />;
+        return (
+          <BurgerButtons
+            added={() => props.addIngriedents(el.type)}
+            key={el.label}
+            label={el.label}
+          />
+        );
       })}
     </div>
   );
