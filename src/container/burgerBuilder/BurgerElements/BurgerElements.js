@@ -36,7 +36,7 @@ class BurgerElements extends Component {
   }
 }
 
-BurgerElements.PropTypes = {
+BurgerElements.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
