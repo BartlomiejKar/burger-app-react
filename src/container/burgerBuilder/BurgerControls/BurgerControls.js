@@ -1,5 +1,6 @@
 import React from "react";
 import "./BurgerButtons/BurgerButtons.css";
+import "./BurgerButtons/buttonOrderNow.css";
 import BurgerButtons from "./BurgerButtons/BurgerButtons";
 
 const controls = [
@@ -26,6 +27,9 @@ const BurgerControls = (props) => {
           />
         );
       })}
+      <button disabled={!props.purchase} className="OrderButton">
+        ORDER NOW!
+      </button>
     </div>
   );
 };
