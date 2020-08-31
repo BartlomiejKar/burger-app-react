@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Burger from "../Burger";
 import BurgerControls from "./BurgerControls/BurgerControls";
+import OrderBurger from "../OrderList/OrderList";
 
 const INGRIEDIENTS_PRICE = {
   salad: 0.4,
@@ -19,6 +20,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 5,
     purchaseState: false,
+    abra: 0,
   };
 
   updatePurchaseState = (updatedIngriedents) => {
@@ -30,7 +32,7 @@ class BurgerBuilder extends Component {
         return sum + el;
       }, 0);
     this.setState({
-      purchaseState: sum > 0,
+      purchaseState: sum,
     });
   };
 
@@ -83,6 +85,7 @@ class BurgerBuilder extends Component {
     return (
       <div>
         <Burger ingriedents={this.state.ingriedents} />
+        <OrderBurger order={this.state.ingriedents} />
         <BurgerControls
           addIngriedents={this.addIngriedents}
           removeIngriedents={this.removeIngriedents}
