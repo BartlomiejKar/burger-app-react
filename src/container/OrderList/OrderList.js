@@ -10,9 +10,14 @@ const OrderList = (props) => {
     );
   });
   return (
-    <div className={props.purchasedState ? "Modal" : "hidden"}>
-      <h3>Order Ingriedents:</h3>
-      <ul>{orderIngriedents}</ul>
+    <div
+      onClick={props.setPurchaseOnFalse}
+      className={props.purchasedState ? "Backdrop" : "hidden"}
+    >
+      <div className={props.purchasedState ? "Modal" : "hidden"}>
+        <h3>Order Ingriedents:</h3>
+        <ul>{orderIngriedents}</ul>
+      </div>
     </div>
   );
 };

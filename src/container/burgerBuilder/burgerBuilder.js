@@ -77,6 +77,12 @@ class BurgerBuilder extends Component {
     this.setState({ purchased: true });
   };
 
+  setOrderedStateToFalse = () => {
+    this.setState({
+      purchased: false,
+    });
+  };
+
   render() {
     const disabledButton = {
       ...this.state.ingriedents,
@@ -89,10 +95,13 @@ class BurgerBuilder extends Component {
     return (
       <div>
         <Burger ingriedents={this.state.ingriedents} />
+
         <OrderBurger
+          setPurchaseOnFalse={this.setOrderedStateToFalse}
           purchasedState={this.state.purchased}
           order={this.state.ingriedents}
         />
+
         <BurgerControls
           orderedState={this.setOrederedState}
           addIngriedents={this.addIngriedents}
