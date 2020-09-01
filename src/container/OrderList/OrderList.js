@@ -10,7 +10,7 @@ const OrderList = (props) => {
     );
   });
   return (
-    <div className="Modal">
+    <div className={props.purchasedState ? "Modal" : "hidden"}>
       <h3>Order Ingriedents:</h3>
       <ul>{orderIngriedents}</ul>
     </div>
