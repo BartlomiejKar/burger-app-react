@@ -1,5 +1,6 @@
 import React from "react";
 import "./OrderList.css";
+import Button from "./Button";
 
 const OrderList = (props) => {
   const orderIngriedents = Object.keys(props.order).map((el) => {
@@ -17,6 +18,12 @@ const OrderList = (props) => {
       <div className={props.purchasedState ? "Modal" : "hidden"}>
         <h3>Order Ingriedents:</h3>
         <ul>{orderIngriedents}</ul>
+        <Button clicked={props.cancelOrder} btnType="Danger">
+          CANCEL
+        </Button>
+        <Button clicked={props.continueOrder} btnType="Success">
+          CONTINUE
+        </Button>
       </div>
     </div>
   );

@@ -83,6 +83,16 @@ class BurgerBuilder extends Component {
     });
   };
 
+  continueOrder = () => {
+    alert("You Continue");
+  };
+
+  cancelOrder = () => {
+    this.setState({
+      purchased: false,
+    });
+  };
+
   render() {
     const disabledButton = {
       ...this.state.ingriedents,
@@ -100,6 +110,8 @@ class BurgerBuilder extends Component {
           setPurchaseOnFalse={this.setOrderedStateToFalse}
           purchasedState={this.state.purchased}
           order={this.state.ingriedents}
+          continueOrder={this.continueOrder}
+          cancelOrder={this.cancelOrder}
         />
 
         <BurgerControls
