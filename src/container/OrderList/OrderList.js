@@ -18,6 +18,9 @@ const OrderList = (props) => {
       <div className={props.purchasedState ? "Modal" : "hidden"}>
         <h3>Order Ingriedents:</h3>
         <ul>{orderIngriedents}</ul>
+        <p>
+          <strong>Total price: {props.price.toFixed(2)} $</strong>
+        </p>
         <Button clicked={props.cancelOrder} btnType="Danger">
           CANCEL
         </Button>

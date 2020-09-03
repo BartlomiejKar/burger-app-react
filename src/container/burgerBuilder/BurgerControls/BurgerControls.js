@@ -13,7 +13,7 @@ const controls = [
 const BurgerControls = (props) => {
   return (
     <div className="BurgerControl">
-      <p>
+      <p style={{ padding: "10px" }}>
         Current price <strong>{props.price.toFixed(2)} $</strong>
       </p>
       {controls.map((el) => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Burger from "../Burger";
 import BurgerControls from "./BurgerControls/BurgerControls";
-import OrderBurger from "../OrderList/OrderList";
+import OrderList from "../OrderList/OrderList";
 
 const INGRIEDIENTS_PRICE = {
   salad: 0.4,
@@ -106,7 +106,8 @@ class BurgerBuilder extends Component {
       <div>
         <Burger ingriedents={this.state.ingriedents} />
 
-        <OrderBurger
+        <OrderList
+          price={this.state.totalPrice}
           setPurchaseOnFalse={this.setOrderedStateToFalse}
           purchasedState={this.state.purchased}
           order={this.state.ingriedents}
