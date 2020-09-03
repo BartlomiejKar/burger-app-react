@@ -7,7 +7,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>Burger app</p>
         <Layout>
           <BurgerBuilder></BurgerBuilder>
         </Layout>
