@@ -7,6 +7,7 @@ import ToolbarMobile from "../Toolbar/ToolbarMobile/ToolbarMobile";
 class Layout extends Component {
   state = {
     toggleMenuMobile: true,
+    toggleMenuDesktop: true,
   };
 
   closerMenuMobile = () => {
@@ -15,10 +16,17 @@ class Layout extends Component {
     });
   };
 
+  closerMenuDesktop = () => {
+    this.setState({
+      toggleMenuDesktop: false,
+      toggleMenuMobile: true,
+    });
+  };
+
   render() {
     return (
       <Child>
-        <Toolbar />
+        <Toolbar close={this.closerMenuDesktop} />
         <ToolbarMobile
           state={this.state.toggleMenuMobile}
           close={this.closerMenuMobile}
