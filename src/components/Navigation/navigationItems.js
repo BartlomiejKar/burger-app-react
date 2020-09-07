@@ -2,7 +2,7 @@ import React from "react";
 import ItemLink from "./Item";
 import "./Navigation.css";
 
-const NavigationItems = () => {
+const NavigationItems = (props) => {
   return (
     <div>
       <ul className="NavigationItem">

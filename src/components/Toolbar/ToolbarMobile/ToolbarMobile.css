@@ -1,4 +1,5 @@
 .ToolbarMobile {
+  position: fixed;
   height: 100%;
   width: 200px;
   max-width: 70%;
@@ -22,4 +23,14 @@
 }
 .Close {
   transform: translateX(-100%);
+}
+
+.LogoMobile {
+  height: 11%;
+}
+
+@media (max-width: 499px) {
+  .DesktopOnly {
+    display: none;
+  }
 }

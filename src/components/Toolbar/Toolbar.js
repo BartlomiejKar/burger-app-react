@@ -1,14 +1,17 @@
 import React from "react";
+import "../Toolbar/ToolbarMobile/ToolbarMobile.css";
 import "./Toolbar.css";
 import Logo from "./Logo";
-import NavigationItems from "../Navigation/navigationItems";
+import NavigationItems from "../Navigation/NavigationItems";
 
 const Toolbar = (props) => {
   return (
     <header className="Toolbar">
       <div>MENU</div>
       <Logo />
-      <NavigationItems />
+      <nav className="DesktopOnly">
+        <NavigationItems />
+      </nav>
     </header>
   );
 };
