@@ -1,7 +1,9 @@
 .Logo {
   padding: 5px;
+  width: 100%;
 }
 
 .Logo img {
   width: 50px;
+  margin-left: 60%;
 }
