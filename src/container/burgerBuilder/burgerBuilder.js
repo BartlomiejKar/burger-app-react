@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Burger from "../Burger";
 import BurgerControls from "./BurgerControls/BurgerControls";
 import OrderList from "../OrderList/OrderList";
+import axios from "../../axios";
 
 const INGRIEDIENTS_PRICE = {
   salad: 0.4,
@@ -84,7 +85,24 @@ class BurgerBuilder extends Component {
   };
 
   continueOrder = () => {
-    alert("You Continue");
+    // alert("You Continue");
+    const order = {
+      ingriedents: this.state.ingriedents,
+      totalPrice: this.state.totalPrice,
+      client: {
+        name: "Bolek",
+        adress: "test",
+        delivery: "fast",
+      },
+    };
+    axios
+      .post("/orders.json", order)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   cancelOrder = () => {
