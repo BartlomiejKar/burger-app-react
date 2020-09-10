@@ -3,6 +3,7 @@ import Burger from "../Burger";
 import BurgerControls from "./BurgerControls/BurgerControls";
 import OrderList from "../OrderList/OrderList";
 import axios from "../../axios";
+import Spinner from "../OrderList/Spinner";
 
 const INGRIEDIENTS_PRICE = {
   salad: 0.4,
@@ -22,6 +23,7 @@ class BurgerBuilder extends Component {
     totalPrice: 5,
     purchaseState: false,
     purchased: false,
+    isLoading: false,
   };
 
   updatePurchaseState = (updatedIngriedents) => {
@@ -86,6 +88,10 @@ class BurgerBuilder extends Component {
 
   continueOrder = () => {
     // alert("You Continue");
+    this.setState({
+      isLoading: true,
+    });
+
     const order = {
       ingriedents: this.state.ingriedents,
       totalPrice: this.state.totalPrice,
@@ -99,9 +105,15 @@ class BurgerBuilder extends Component {
       .post("/orders.json", order)
       .then((response) => {
         console.log(response);
+        this.setState({
+          isLoading: false,
+        });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          isLoading: false,
+        });
       });
   };
 
@@ -120,19 +132,25 @@ class BurgerBuilder extends Component {
       disabledButton[key] = disabledButton[key] <= 0;
     }
 
+    let orderList = (
+      <OrderList
+        price={this.state.totalPrice}
+        setPurchaseOnFalse={this.setOrderedStateToFalse}
+        purchasedState={this.state.purchased}
+        order={this.state.ingriedents}
+        continueOrder={this.continueOrder}
+        cancelOrder={this.cancelOrder}
+      />
+    );
+
+    if (this.state.isLoading) {
+      orderList = <Spinner />;
+    }
+
     return (
       <div>
         <Burger ingriedents={this.state.ingriedents} />
-
-        <OrderList
-          price={this.state.totalPrice}
-          setPurchaseOnFalse={this.setOrderedStateToFalse}
-          purchasedState={this.state.purchased}
-          order={this.state.ingriedents}
-          continueOrder={this.continueOrder}
-          cancelOrder={this.cancelOrder}
-        />
-
+        {orderList}
         <BurgerControls
           orderedState={this.setOrederedState}
           addIngriedents={this.addIngriedents}
