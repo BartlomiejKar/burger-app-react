@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Burger from "../Burger";
 import BurgerControls from "./BurgerControls/BurgerControls";
 import OrderList from "../OrderList/OrderList";
-import axios from "../../axios";
 import Spinner from "../OrderList/Spinner";
 
 const INGRIEDIENTS_PRICE = {
@@ -88,32 +87,7 @@ class BurgerBuilder extends Component {
 
   continueOrder = () => {
     // alert("You Continue");
-    // this.setState({
-    //   isLoading: true,
-    // });
-    // const order = {
-    //   ingriedents: this.state.ingriedents,
-    //   totalPrice: this.state.totalPrice,
-    //   client: {
-    //     name: "Bolek",
-    //     adress: "test",
-    //     delivery: "fast",
-    //   },
-    // };
-    // axios
-    //   .post("/orders.json", order)
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.setState({
-    //       isLoading: false,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     this.setState({
-    //       isLoading: false,
-    //     });
-    //   });
+
     const queryParams = [];
     for (let i in this.state.ingriedents) {
       queryParams.push(
@@ -121,6 +95,7 @@ class BurgerBuilder extends Component {
           "=" +
           encodeURIComponent(this.state.ingriedents[i])
       );
+      queryParams.push(`price=` + this.state.totalPrice);
     }
     const queryString = queryParams.join("&");
     this.props.history.push({

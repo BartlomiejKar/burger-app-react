@@ -5,16 +5,23 @@ import OrderForm from "./OrderForm";
 
 class Checkout extends Component {
   state = {
-    ingriedents: {},
+    ingriedents: null,
+    totalPrice: 0,
   };
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     const query = new URLSearchParams(this.props.location.search);
     const ingriedents = {};
+    let price = 0;
     for (let param of query.entries()) {
-      ingriedents[param[0]] = +param[1];
+      if (param[0] === `price`) {
+        price = param[1];
+      } else {
+        ingriedents[param[0]] = +param[1];
+      }
     }
     this.setState({
       ingriedents: ingriedents,
+      totalPrice: price,
     });
   }
   cancelCheckoutHandler = () => {
@@ -23,6 +30,10 @@ class Checkout extends Component {
   };
   continueCheckoutHandler = () => {
     this.props.history.push("/checkout/form-data");
+  };
+
+  handlerSendForm = (e) => {
+    e.preventDefault();
   };
   render() {
     return (
@@ -34,7 +45,13 @@ class Checkout extends Component {
         />
         <Route
           path={this.props.match.path + `/form-data`}
-          component={OrderForm}
+          render={(props) => (
+            <OrderForm
+              ingriedents={this.state.ingriedents}
+              price={this.state.totalPrice}
+              {...props}
+            />
+          )}
         />
       </div>
     );
