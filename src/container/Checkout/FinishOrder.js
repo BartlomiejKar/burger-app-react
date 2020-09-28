@@ -28,7 +28,7 @@ const FinishOrder = (props) => {
   return (
     <div className="FinishOrder">
       <p>Ingriedents: {outputIngriedents}</p>
-      <p>Price:{props.totalPrice}</p>
+      <p>Price: {props.totalPrice}$</p>
     </div>
   );
 };
