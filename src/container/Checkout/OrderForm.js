@@ -22,7 +22,7 @@ class OrderForm extends Component {
     });
     const order = {
       ingriedents: this.props.ingriedents,
-      totalPrice: this.props.totalPrice,
+      totalPrice: this.props.price,
       client: {
         name: "Bolek",
         adress: "test",
